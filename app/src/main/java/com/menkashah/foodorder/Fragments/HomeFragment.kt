@@ -11,13 +11,10 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.menkashah.foodorder.Adapter.PopularAdapter
+import com.menkashah.foodorder.MenuBottomSheetFragment
 import com.menkashah.foodorder.R
 import com.menkashah.foodorder.databinding.FragmentHomeBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 
 class HomeFragment : Fragment() {
@@ -32,6 +29,12 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
          binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+         binding.viewMenu.setOnClickListener{
+             val BottomSheetDialog = MenuBottomSheetFragment()
+             BottomSheetDialog.show(parentFragmentManager,"task")
+
+        }
         return binding.root
     }
 
@@ -64,14 +67,14 @@ class HomeFragment : Fragment() {
                 Toast.makeText(requireContext(), itemMessage, Toast.LENGTH_SHORT).show()
 
             }
-
             override fun doubleClick(position: Int) {
                 // Do not use onItemSelected if you are using a double click listener at the same time.
                 // Its just added for specific cases.
                 // Listen for clicks under 250 milliseconds.
             }
         })
-        val foodName = listOf("Burger"," Momos","Sandwitch","Chilli","Bread","Dal", "Roti","Rice","Panner","Maggie")
+
+        val foodName = listOf("Burger","Momos","Sandwitch","Chilli","Bread","Dal", "Roti","Rice","Panner","Maggie")
         val foodPrice = listOf("$5","$4","$7","$10","$2","$5","$4","$7","$10","$2")
         val foodImage = listOf(R.drawable.banner0,
             R.drawable.banner1,R.drawable.banner2,R.drawable.banner9,R.drawable.banner4,
@@ -82,6 +85,7 @@ class HomeFragment : Fragment() {
         binding.PopularrecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.PopularrecyclerView.adapter= adapter
     }
+
 
     companion object{
 

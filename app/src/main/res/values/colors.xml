@@ -37,4 +37,8 @@
     <color name="startColor">#76DA7A</color>
     <color name="endColor">#519F54</color>
 
+    <color name="transparent">#E0EAE1</color>
+
+
+
 </resources>
